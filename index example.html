@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+<script src="/socket.io/socket.io.js"></script>
+<!--<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>-->
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  var socket = io();
+  console.log(socket);
+  
+  $('form').submit(function(){
+	
+  });
+	var a = 2;
+	console.log(life(a,function(data1,data2){
+		console.log(data1+" - " + data2);
+		
+		
+	}
+	));
+  function life(aa,callback){
+	setTimeout(function(){ 
+		alert("Hello");
+		b = aa+1;
+		callback(b,aa);
+		return b;
+	}, 3000);
+  }
+  
+  
+  
+	function validateForm(){
+		console.log("A!");
+		socket.emit('chat message', {type:"person",ID:3},function(data){
+			console.log(data);
+		});
+		$('#m').val('');
+		return false;
+	}
+  
+</script>
+  
+  <body>
+    <ul id="messages"></ul>
+    <form action="weibo.com/login.php" onsubmit="validateForm()" >
+      <input id="m"  autocomplete="off" /><button type="submit">Send</button>
+	  
+    </form>
+  </body>
+</html>
